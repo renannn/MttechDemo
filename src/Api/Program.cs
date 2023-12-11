@@ -50,8 +50,7 @@ builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerSche
 builder.Services.AddAuthorizationBuilder();
 
 builder.Services.AddHealthChecks();
-
-builder.Services.Configure<SmtpConfig>(options => config.GetSection("SmtpConfig").Bind(options));
+ 
 builder.Services.Configure<AntiDosConfig>(options => config.GetSection("AntiDosConfig").Bind(options));
 builder.Services.Configure<AntiXssConfig>(options => config.GetSection("AntiXssConfig").Bind(options));
 
