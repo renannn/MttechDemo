@@ -60,6 +60,7 @@ namespace Portal.Views
 
 			DtInicial.Value = DateTime.Today;
 			DtFinal.Value = DateTime.Today;
+			LblValorConsolidado.Text = "Valor Consolidado: " + string.Format(CultureInfo.CreateSpecificCulture("pt-BR"), "{0:C2}", 0);
 		}
 
 		private void TxtValor_TextChanged(object sender, EventArgs e)
@@ -117,8 +118,12 @@ namespace Portal.Views
 														Valor = ul
 													});
 
-				dataGridView1.AutoGenerateColumns = false;
-				dataGridView1.DataSource = itens;
+				GvResultado.AutoGenerateColumns = false;
+				GvResultado.DataSource = itens;
+
+				var valorConsolidado = itens.Where(X => X.TipoLancamento == 1).Sum(X => X.Valor) - itens.Where(X => X.TipoLancamento == 2).Sum(X => X.Valor);
+
+				LblValorConsolidado.Text = "Valor Consolidado: " + string.Format(CultureInfo.CreateSpecificCulture("pt-BR"), "{0:C2}", valorConsolidado);
 
 			}
 			catch (ApiException apiEx)
@@ -142,12 +147,12 @@ namespace Portal.Views
 				Enabled = false;
 
 				DataTable data = new DataTable();
-				foreach (DataGridViewColumn column in dataGridView1.Columns)
+				foreach (DataGridViewColumn column in GvResultado.Columns)
 				{
 					data.Columns.Add(column.HeaderText, column.ValueType);
 				}
 
-				foreach (DataGridViewRow row in dataGridView1.Rows)
+				foreach (DataGridViewRow row in GvResultado.Rows)
 				{
 					data.Rows.Add();
 					foreach (DataGridViewCell cell in row.Cells)
@@ -172,9 +177,9 @@ namespace Portal.Views
 					}
 					else
 					{
-						ToCSV(data,fi.FileName);
+						ToCSV(data, fi.FileName);
 					}
-					
+
 					MessageBox.Show("Relatório exportado com sucesso.",
 							"Lançamentos Diarios",
 							MessageBoxButtons.OK,
@@ -195,9 +200,9 @@ namespace Portal.Views
 			}
 		}
 
-		public void ToCSV(DataTable dtDataTable,string filepath)
-		{ 
-			StreamWriter sw = new StreamWriter(filepath,false,new UTF8Encoding(false));
+		public void ToCSV(DataTable dtDataTable, string filepath)
+		{
+			StreamWriter sw = new StreamWriter(filepath, false, new UTF8Encoding(false));
 			//headers
 			for (int i = 0; i < dtDataTable.Columns.Count; i++)
 			{

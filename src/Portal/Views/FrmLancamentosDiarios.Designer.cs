@@ -30,6 +30,7 @@
 		{
 			this.CboEmails = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.lblConsolidado = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.TxtValor = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
@@ -47,13 +48,14 @@
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.panel5 = new System.Windows.Forms.Panel();
 			this.panel7 = new System.Windows.Forms.Panel();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.BtnExportar = new System.Windows.Forms.Button();
+			this.GvResultado = new System.Windows.Forms.DataGridView();
 			this.DataSistema = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TipoLancamentoDescritivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NomeUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Observacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.BtnExportar = new System.Windows.Forms.Button();
+			this.LblValorConsolidado = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.panel3.SuspendLayout();
@@ -61,7 +63,7 @@
 			this.panel4.SuspendLayout();
 			this.panel5.SuspendLayout();
 			this.panel7.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.GvResultado)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// CboEmails
@@ -85,6 +87,16 @@
 			this.label1.Size = new System.Drawing.Size(40, 17);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Email";
+			// 
+			// lblConsolidado
+			// 
+			this.lblConsolidado.AutoSize = true;
+			this.lblConsolidado.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+			this.lblConsolidado.Location = new System.Drawing.Point(3, 710);
+			this.lblConsolidado.Name = "lblConsolidado";
+			this.lblConsolidado.Size = new System.Drawing.Size(143, 17);
+			this.lblConsolidado.TabIndex = 1;
+			this.lblConsolidado.Text = "Valor Consolidado : {0}";
 			// 
 			// panel1
 			// 
@@ -284,47 +296,33 @@
 			// 
 			this.tableLayoutPanel1.SetColumnSpan(this.panel7, 6);
 			this.panel7.Controls.Add(this.BtnPesquisar);
+			this.panel7.Controls.Add(this.lblConsolidado);
 			this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel7.Location = new System.Drawing.Point(3, 137);
 			this.panel7.Name = "panel7";
 			this.panel7.Size = new System.Drawing.Size(1078, 45);
 			this.panel7.TabIndex = 6;
 			// 
-			// dataGridView1
+			// GvResultado
 			// 
-			this.dataGridView1.AllowUserToAddRows = false;
-			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.GvResultado.AllowUserToAddRows = false;
+			this.GvResultado.AllowUserToDeleteRows = false;
+			this.GvResultado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.GvResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.GvResultado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DataSistema,
             this.TipoLancamentoDescritivo,
             this.NomeUsuario,
             this.Valor,
             this.Observacao});
-			this.dataGridView1.Location = new System.Drawing.Point(3, 204);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.RowTemplate.Height = 24;
-			this.dataGridView1.Size = new System.Drawing.Size(1078, 500);
-			this.dataGridView1.TabIndex = 15;
-			// 
-			// BtnExportar
-			// 
-			this.BtnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnExportar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(150)))), ((int)(((byte)(190)))));
-			this.BtnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.BtnExportar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.BtnExportar.ForeColor = System.Drawing.Color.White;
-			this.BtnExportar.Location = new System.Drawing.Point(824, 710);
-			this.BtnExportar.Name = "BtnExportar";
-			this.BtnExportar.Size = new System.Drawing.Size(254, 42);
-			this.BtnExportar.TabIndex = 16;
-			this.BtnExportar.Text = "Exportar";
-			this.BtnExportar.UseVisualStyleBackColor = false;
-			this.BtnExportar.Click += new System.EventHandler(this.BtnExportar_Click);
+			this.GvResultado.Location = new System.Drawing.Point(3, 204);
+			this.GvResultado.Name = "GvResultado";
+			this.GvResultado.ReadOnly = true;
+			this.GvResultado.RowTemplate.Height = 24;
+			this.GvResultado.Size = new System.Drawing.Size(1078, 500);
+			this.GvResultado.TabIndex = 15;
 			// 
 			// DataSistema
 			// 
@@ -366,13 +364,40 @@
 			this.Observacao.ReadOnly = true;
 			this.Observacao.Width = 350;
 			// 
+			// BtnExportar
+			// 
+			this.BtnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.BtnExportar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(150)))), ((int)(((byte)(190)))));
+			this.BtnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.BtnExportar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.BtnExportar.ForeColor = System.Drawing.Color.White;
+			this.BtnExportar.Location = new System.Drawing.Point(824, 710);
+			this.BtnExportar.Name = "BtnExportar";
+			this.BtnExportar.Size = new System.Drawing.Size(254, 42);
+			this.BtnExportar.TabIndex = 16;
+			this.BtnExportar.Text = "Exportar";
+			this.BtnExportar.UseVisualStyleBackColor = false;
+			this.BtnExportar.Click += new System.EventHandler(this.BtnExportar_Click);
+			// 
+			// LblValorConsolidado
+			// 
+			this.LblValorConsolidado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.LblValorConsolidado.AutoSize = true;
+			this.LblValorConsolidado.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LblValorConsolidado.Location = new System.Drawing.Point(1, 712);
+			this.LblValorConsolidado.Name = "LblValorConsolidado";
+			this.LblValorConsolidado.Size = new System.Drawing.Size(265, 30);
+			this.LblValorConsolidado.TabIndex = 17;
+			this.LblValorConsolidado.Text = "Valor Consolidado: {R$0,00}";
+			// 
 			// FrmLancamentosDiarios
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1084, 761);
+			this.Controls.Add(this.LblValorConsolidado);
 			this.Controls.Add(this.BtnExportar);
-			this.Controls.Add(this.dataGridView1);
+			this.Controls.Add(this.GvResultado);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.panel1);
 			this.MinimumSize = new System.Drawing.Size(1100, 800);
@@ -392,8 +417,10 @@
 			this.panel5.ResumeLayout(false);
 			this.panel5.PerformLayout();
 			this.panel7.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			this.panel7.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.GvResultado)).EndInit();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -401,6 +428,7 @@
 
 		private System.Windows.Forms.ComboBox CboEmails;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label lblConsolidado;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.TextBox TxtValor;
 		private System.Windows.Forms.Label label2;
@@ -418,12 +446,13 @@
 		private System.Windows.Forms.Panel panel4;
 		private System.Windows.Forms.Panel panel5;
 		private System.Windows.Forms.Panel panel7;
-		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridView GvResultado;
 		private System.Windows.Forms.Button BtnExportar;
 		private System.Windows.Forms.DataGridViewTextBoxColumn DataSistema;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TipoLancamentoDescritivo;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NomeUsuario;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Observacao;
+		private System.Windows.Forms.Label LblValorConsolidado;
 	}
 }

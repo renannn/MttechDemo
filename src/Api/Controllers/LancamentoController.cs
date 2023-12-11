@@ -91,8 +91,8 @@ namespace Api.Controllers
 			predicate = predicate.And(a => a.DataSistema <= request.DataTermino.AddDays(1).AddMicroseconds(-1));
 
 			var itensEntity = await _unitOfWork.Set<Lancamento>().Where(predicate).ToListAsync();
-			 
-			return itensEntity.Select(x=> _mapper.Map<LancamentoResponseModel>(x)).ToList();
+
+			return itensEntity.Select(x => _mapper.Map<LancamentoResponseModel>(x)).ToList();
 		}
 	}
 }

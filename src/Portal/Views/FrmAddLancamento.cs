@@ -32,7 +32,6 @@ namespace Portal.Views
 
 		private void TxtValor_TextChanged(object sender, EventArgs e)
 		{
-
 			string value = TxtValor.Text.Replace(",", "")
 				.Replace("R$", "")
 				.Replace(".", "")
